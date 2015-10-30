@@ -88,26 +88,26 @@ if options.setup :
     config['Low'] = {'X-Frame-Options': 'deny|sameorigin',
                       'Content-Type': 'Bool',
                       'Content-Security-Policy' : 'Bool',
-                      'Public-Key-Pins': 'Bool'}
+                      'Public-Key-Pins': 'Bool',
+                      'X-Robots-Tag' : 'Bool'}
 
     try :
-        with open(options.conf_file, 'w+') as file:
+        with open(conf_file, 'w+') as file:
                 config.write(file, "UTF-8")
+                print('Setup completed, you can config headers manual under %s' %(conf_file))
     except Exception as e:
         print("Following Error occurred when creating config file: \r\n %s" %(e))
         exit(1)
-    print('Setup completed, you can config headers manual under %s' %(conf_file))
+
 #    exit(0)
 
 #### Read Config
 try :
     with open(conf_file, 'r') as configfile:
-        config.read(configfile)
+        config.readfp(configfile, 'UTF-8')
 except Exception as e:
+    print("Could not open config file")
     print(e)
-
-for key in config.keys() :
-    print(key)
 
 #### Parsing target
 request = create_http_conn(url)
