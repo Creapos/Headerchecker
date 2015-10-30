@@ -1,7 +1,10 @@
-__author__ = 'prosec'
+__author__ = 'tim_schughart'
+
+#!/usr/bin/python3.4
+
+#Written in Python 3.4
 
 #### Libary imports
-
 import re
 import sys
 import argparse
