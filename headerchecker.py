@@ -98,8 +98,7 @@ if options.setup :
     except Exception as e:
         print("Following Error occurred when creating config file: \r\n %s" %(e))
         exit(1)
-
-#    exit(0)
+    exit(0)
 
 #### Read Config
 try :
@@ -108,6 +107,7 @@ try :
 except Exception as e:
     print("Could not open config file")
     print(e)
+    exit(1)
 
 #### Parsing target
 request = create_http_conn(url)
